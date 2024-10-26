@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST ex</title>
+</head>
+<style>
+    body{
+        background-image: url('images/background.jpg');
+        color: #e0e0e0;
+        font-family: 'Arial', sans-serif;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin-left: 650px;
+        margin-top: 75px;
+        background-color: rgba(255, 255, 255, 0.1); 
+        border-radius: 15px;
+        width: 300px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        align-items: center;
+        padding: 10px;
+    }
+    input{
+        width: 200px;
+    }
+    select{
+        width: 205px;
+        height: 25px;
+    }
+    #addbutton{
+        width: 200px;
+        color: #00ff26; 
+        text-shadow: 0 0 5px #00ff26, 0 0 10px #00ff26;
+        background-color: rgba(255, 255, 255, 0.3);
+        font-weight: bolder;
+    }
+    #addbutton:hover{
+        color: #00ff26; 
+        text-shadow: 0 0 5px #00ff26, 0 0 10px #00ff26;
+        background-color: rgba(180, 164, 164, 0.3);
+        font-weight: bolder;
+        cursor: pointer;
+    }
+    #list{
+        margin-top: 20px;
+        padding: 10px;
+       
+    }
+    li {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid black;
+        padding: 5px;
+        margin-bottom: 5px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.3); 
+        backdrop-filter: blur(10px);
+        color: #00ffff;
+        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+        font-weight: bolder;
+    }
+    label{
+        color: #00ffff;
+        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    }
+    #delbutton{
+        color: #00ff26; 
+        text-shadow: 0 0 5px #00ff26, 0 0 10px #00ff26;
+        background-color: rgba(255, 255, 255, 0.3);
+        font-weight:bold;
+    }
+    #delbutton:hover{
+        color: #00ff26; 
+        text-shadow: 0 0 5px #00ff26, 0 0 10px #00ff26;
+        background-color: rgba(125, 114, 114, 0.3);
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+<body>
+<div class="container">
+    <label for="text">NAME : </label>
+    <input type="text" id="input" name="text"><br>
+    <label for="number">AGE : </label>
+    <input type="number" id="number" name="number"><br>
+    <label for="radio">GENDER : </label>
+    <select name="radio" id="radio">
+        <option> Male</option>
+        <option> Female</option>
+    </select><br>
+    <label for="course">COURSE : </label>
+    <select name="course" id="course">
+        <option> Frontend</option>
+        <option>Fullstack</option>
+        <option>UI/UX</option>
+    </select><br>
+    <button onclick="additem()" id="addbutton">SAVE</button>
+</div>
+<ul id="list">
+</ul>
+</body>
+</html>
+<script>
+    var ul = document.getElementById("list")
+    var input = document.getElementById("input")
+    var input2 = document.getElementById("number")
+    var input3 = document.getElementById("radio")
+    var input4 = document.getElementById("course")
+    function additem()
+    {
+        var li = document.createElement("li")
+        li.innerHTML = `
+            <span class="item">${input.value}</span>
+            <span class="item">${input2.value}</span>
+            <span class="item">${input3.value}</span>
+            <span class="item">${input4.value}</span>
+            <button onclick="delitem(event)" id="delbutton">DELETE</button>
+        `;
+        ul.appendChild(li);
+    }
+    function delitem()
+    {
+        event.target.parentElement.remove()
+    }
+</script>
